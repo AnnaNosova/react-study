@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { restaurants } from '../materials/mock.js';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <div>
