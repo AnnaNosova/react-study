@@ -1,3 +1,3 @@
-export const Menu = ({ name }) => {
-    return <div>{name}</div>;
+export const Menu = ({ name, price }) => {
+    return <div>{name} - {price} USD</div>;
 };

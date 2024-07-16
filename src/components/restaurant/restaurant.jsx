@@ -12,25 +12,29 @@ export const Restaurant = ({ restaurant }) => {
     return (
         <div key={restaurant.id}>
             <h3> {restaurant.name} </h3>
-            <h4>Menu</h4>
-                <ul>
-                    {restaurant.menu.map((menuItem) => (
-                        <li key={menuItem.id}>
-                            <Menu name={menuItem.name} />
+            <div>
+                <h4>Menu</h4>
+                <ul style={{listStyleType: "none"}}>
+                    {restaurant.menu.map(({id, name, price}) => (
+                        <li key={id}>
+                            <Menu name={name} price={price} />
                             <CounterContainer />
                         </li>
                     ))}
                 </ul>
-            <h4>Reviews</h4>
-                {restaurant.reviews?.length ? (
-                    <ul>
-                        {restaurant.reviews.map((review) => (
-                            <li key={review.id}>
-                                <Review text={review} />
-                            </li>
-                        ))}
-                    </ul>
-                ) : null}
+            </div>
+            <div>
+                <h4>Reviews</h4>
+                    {restaurant.reviews?.length ? (
+                        <ul>
+                            {restaurant.reviews.map(({id, text}) => (
+                                <li key={id}>
+                                    <Review text={text} />
+                                </li>
+                            ))}
+                        </ul>
+                    ) : null}
+            </div>
         </div>
     );
 };
