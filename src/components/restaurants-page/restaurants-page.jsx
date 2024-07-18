@@ -17,7 +17,7 @@ export const RestaurantsPage = () => {
                <ul style={{listStyleType: "none"}}>
                    {restaurants.map(({id, name}) => (
                        <li>
-                           <button
+                           <button style={{marginBottom: "5px"}}
                                onClick={() => setActiveRestaurantId(id)}
                                disabled={id===activeRestaurantId}
                            >
@@ -26,6 +26,15 @@ export const RestaurantsPage = () => {
                        </li>
                    ))}
                </ul>
+           </div>
+           <div>
+               {activeRestaurant && <Restaurant restaurant={activeRestaurant}/>}
+           </div>
+           <div>
+               {activeRestaurant && <Restaurant restaurant={activeRestaurant}/>}
+           </div>
+           <div>
+               {activeRestaurant && <Restaurant restaurant={activeRestaurant}/>}
            </div>
            <div>
                {activeRestaurant && <Restaurant restaurant={activeRestaurant}/>}

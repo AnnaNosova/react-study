@@ -1,6 +1,6 @@
 import { Menu } from "../menu/menu";
-import { Review } from "../review/review";
-import { CounterContainer } from '../couner/container';
+import { Reviews } from "../reviews/reviews";
+import { ReviewForm } from '../review-form/review-form';
 
 
 export const Restaurant = ({ restaurant }) => {
@@ -13,27 +13,13 @@ export const Restaurant = ({ restaurant }) => {
         <div key={restaurant.id}>
             <h3> {restaurant.name} </h3>
             <div>
-                <h4>Menu</h4>
-                <ul style={{listStyleType: "none"}}>
-                    {restaurant.menu.map(({id, name, price}) => (
-                        <li key={id}>
-                            <Menu name={name} price={price} />
-                            <CounterContainer />
-                        </li>
-                    ))}
-                </ul>
+                <Menu menu={restaurant.menu}/>
             </div>
             <div>
-                <h4>Reviews</h4>
-                    {restaurant.reviews?.length ? (
-                        <ul>
-                            {restaurant.reviews.map(({id, text}) => (
-                                <li key={id}>
-                                    <Review text={text} />
-                                </li>
-                            ))}
-                        </ul>
-                    ) : null}
+                <Reviews reviews={restaurant.reviews} />
+            </div>
+            <div>
+                <ReviewForm />
             </div>
         </div>
     );
