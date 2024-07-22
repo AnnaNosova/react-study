@@ -1,29 +1,36 @@
 import { useEffect, useState } from 'react';
+import { throttle } from 'throttle-debounce';
+import styles from "./progress-bar.module.sass"
 
-export const ProgressBar = () => {
+const calculatePosition = () => {
+    return (
+        ( window.scrollY / ( document.documentElement.scrollHeight - window.innerHeight ) ) * 100
+    );
+};
 
-    const [coordY, setCoordY] = useState(window.scrollY);
-
-    const determinePosition = () => {
-        return (Math.round(
-            ( coordY / ( document.body.scrollHeight - window.innerHeight ) ) * 100) + '%'
-        );
-    };
+const useProgressBar = () => {
+    const [value, setValue] = useState("0%");
 
     useEffect(() => {
-        window.addEventListener("scroll", () => setCoordY(window.scrollY));
-        return () => window.removeEventListener("scroll", () => setCoordY(window.scrollY));
+        const handler = throttle(20, () => {
+            const progress = calculatePosition();
+
+            setValue( `${ progress }%` );
+        });
+
+        window.addEventListener("scroll", handler);
+        return () => window.removeEventListener("scroll", handler);
     }, []);
 
+    return value;
+}
+
+export const ProgressBar = () => {
+    const progress = useProgressBar();
+
     return (
-        <div className="progress-bar"
-             style={{
-                 width: determinePosition(),
-                 height: "10px",
-                 backgroundColor: "#DC2626",
-                 overflow: "hidden",
-                 position: "fixed" }}
-        >
-        </div>
+        <div className={styles["progress-bar"]}
+             style={{ width: progress }}
+        />
     )
 };

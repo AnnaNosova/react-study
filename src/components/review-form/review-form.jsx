@@ -1,5 +1,6 @@
-import { useForm } from "./hooks";
+import { useForm } from "./hooks.js";
 import { Counter } from '../counter/counter';
+import styles from "./review-form.module.sass"
 
 export const ReviewForm = () => {
     const { form, updateName, updateText, updateRating, sendReview } = useForm();
@@ -8,17 +9,17 @@ export const ReviewForm = () => {
 
     const increment = () => {
         updateRating( rating + 1 );
-
     };
+
     const decrement = () => {
         updateRating(rating - 1);
-
     };
 
     return (
-            <form>
-                <h4>Send a review</h4>
-                <label>Name  </label>
+        <form className={styles["review-form"]} onSubmit={(e) => e.preventDefault()}>
+            <h4 className={`section-title ${styles["title"]}`}>Send a review</h4>
+            <div className={styles["form-input"]}>
+                <label>Name</label>
                 <input
                     type={"text"}
                     name={"name"}
@@ -27,31 +28,33 @@ export const ReviewForm = () => {
                         updateName(event.target.value);
                     }}
                 />
-                <div><br/></div>
-                <label>Text  </label>
-                <input
-                    type={"text"}
+            </div>
+            <div className={styles["form-input"]}>
+                <label>Text</label>
+                <textarea
                     name={"text"}
+                    rows={5}
                     value={text}
                     onChange={(event) => {
                         updateText(event.target.value);
                     }}
                 />
-                <div><br/></div>
+            </div>
+            <div className={styles["form-input"]}>
                 <label>Rate</label>
                 <Counter
                     value={rating}
                     increment={increment}
                     decrement={decrement}
-                    min={0}
+                    min={1}
                     max={5}
                 />
-                <br/>
+            </div>
 
-                <div>
-                    <button onClick={ sendReview }>Send</button>
-                </div>
-                <br/>
-            </form>
+            <div className={styles["form-input"]}>
+                <button className={styles["btn"]} onClick={ sendReview }>Send</button>
+            </div>
+            <br/>
+        </form>
     );
 };

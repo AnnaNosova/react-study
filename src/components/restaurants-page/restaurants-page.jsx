@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { restaurants } from '../../constants/mock';
 import { Restaurant } from '../restaurant/restaurant';
+import styles from "./restaurants-page.module.sass"
 
 export const RestaurantsPage = () => {
     const [activeRestaurantId, setActiveRestaurantId] = useState(
@@ -14,10 +15,10 @@ export const RestaurantsPage = () => {
     return (
        <div>
            <div>
-               <ul style={{listStyleType: "none"}}>
+               <ul className={styles["restaurants-list"]}>
                    {restaurants.map(({id, name}) => (
                        <li>
-                           <button style={{marginBottom: "5px"}}
+                           <button className={styles["tab-link"]}
                                onClick={() => setActiveRestaurantId(id)}
                                disabled={id===activeRestaurantId}
                            >
@@ -27,16 +28,16 @@ export const RestaurantsPage = () => {
                    ))}
                </ul>
            </div>
-           <div>
+           <div className={styles["restaurant-card"]}>
                {activeRestaurant && <Restaurant restaurant={activeRestaurant}/>}
            </div>
-           <div>
+           <div className={styles["restaurant-card"]}>
                {activeRestaurant && <Restaurant restaurant={activeRestaurant}/>}
            </div>
-           <div>
+           <div className={styles["restaurant-card"]}>
                {activeRestaurant && <Restaurant restaurant={activeRestaurant}/>}
            </div>
-           <div>
+           <div className={styles["restaurant-card"]}>
                {activeRestaurant && <Restaurant restaurant={activeRestaurant}/>}
            </div>
        </div>
