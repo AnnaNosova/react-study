@@ -4,12 +4,12 @@ export const Reviews = ( { reviews }) => {
     if (reviews?.length) {
         return (
             <div>
-                <h4 className={"section-title"}>Reviews</h4>
-                <ul className={styles["review"]}>
+                <h4 className={"sectionTitle"}>Reviews</h4>
+                <ul className={styles.review}>
                     {reviews.map(({ id, user, text }) => (
-                        <li className={styles["review-item"]} key={ id }>
-                            <div className={styles["review-author"]}>{ user }:</div>
-                            <div className={styles["review-text"]}>{ text }</div>
+                        <li className={styles.reviewItem} key={ id }>
+                            <div className={styles.reviewAuthor}>{ user }:</div>
+                            <div className={styles.reviewText}>{ text }</div>
                         </li>
                     ) ) }
                 </ul>

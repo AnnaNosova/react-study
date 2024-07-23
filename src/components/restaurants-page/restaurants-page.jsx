@@ -15,10 +15,10 @@ export const RestaurantsPage = () => {
     return (
        <div>
            <div>
-               <ul className={styles["restaurants-list"]}>
+               <ul className={styles.restaurantsList}>
                    {restaurants.map(({id, name}) => (
                        <li>
-                           <button className={styles["tab-link"]}
+                           <button className={styles.tabLink}
                                onClick={() => setActiveRestaurantId(id)}
                                disabled={id===activeRestaurantId}
                            >
@@ -28,16 +28,16 @@ export const RestaurantsPage = () => {
                    ))}
                </ul>
            </div>
-           <div className={styles["restaurant-card"]}>
+           <div className={styles.restaurantCard}>
                {activeRestaurant && <Restaurant restaurant={activeRestaurant}/>}
            </div>
-           <div className={styles["restaurant-card"]}>
+           <div className={styles.restaurantCard}>
                {activeRestaurant && <Restaurant restaurant={activeRestaurant}/>}
            </div>
-           <div className={styles["restaurant-card"]}>
+           <div className={styles.restaurantCard}>
                {activeRestaurant && <Restaurant restaurant={activeRestaurant}/>}
            </div>
-           <div className={styles["restaurant-card"]}>
+           <div className={styles.restaurantCard}>
                {activeRestaurant && <Restaurant restaurant={activeRestaurant}/>}
            </div>
        </div>

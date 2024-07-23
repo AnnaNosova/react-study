@@ -12,7 +12,7 @@ export const Restaurant = ({ restaurant }) => {
 
     return (
         <div key={restaurant.id}>
-            <h3 className={styles["name"]}> {restaurant.name} </h3>
+            <h3 className={styles.name}> {restaurant.name} </h3>
             <div>
                 <Menu menu={restaurant.menu}/>
             </div>

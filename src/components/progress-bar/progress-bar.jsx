@@ -8,7 +8,7 @@ const calculatePosition = () => {
     );
 };
 
-const useProgressBar = () => {
+const progressBarWidth = () => {
     const [value, setValue] = useState("0%");
 
     useEffect(() => {
@@ -26,10 +26,10 @@ const useProgressBar = () => {
 }
 
 export const ProgressBar = () => {
-    const progress = useProgressBar();
+    const progress = progressBarWidth();
 
     return (
-        <div className={styles["progress-bar"]}
+        <div className={styles.progressBar}
              style={{ width: progress }}
         />
     )

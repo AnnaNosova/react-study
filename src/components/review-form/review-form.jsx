@@ -16,9 +16,9 @@ export const ReviewForm = () => {
     };
 
     return (
-        <form className={styles["review-form"]} onSubmit={(e) => e.preventDefault()}>
-            <h4 className={`section-title ${styles["title"]}`}>Send a review</h4>
-            <div className={styles["form-input"]}>
+        <form className={styles.reviewForm} onSubmit={(e) => e.preventDefault()}>
+            <h4 className={`sectionTitle ${styles.title}`}>Send a review</h4>
+            <div className={styles.formInput}>
                 <label>Name</label>
                 <input
                     type={"text"}
@@ -29,7 +29,7 @@ export const ReviewForm = () => {
                     }}
                 />
             </div>
-            <div className={styles["form-input"]}>
+            <div className={styles.formInput}>
                 <label>Text</label>
                 <textarea
                     name={"text"}
@@ -40,7 +40,7 @@ export const ReviewForm = () => {
                     }}
                 />
             </div>
-            <div className={styles["form-input"]}>
+            <div className={styles.formInput}>
                 <label>Rate</label>
                 <Counter
                     value={rating}
@@ -51,8 +51,8 @@ export const ReviewForm = () => {
                 />
             </div>
 
-            <div className={styles["form-input"]}>
-                <button className={styles["btn"]} onClick={ sendReview }>Send</button>
+            <div className={styles.formInput}>
+                <button className={styles.btn} onClick={ sendReview }>Send</button>
             </div>
             <br/>
         </form>
