@@ -2,8 +2,11 @@ import { useState } from 'react';
 import { restaurants } from '../../constants/mock';
 import { Restaurant } from '../restaurant/restaurant';
 import styles from "./restaurants-page.module.sass"
+import classnames from 'classnames';
+import { useTheme } from '../theme-context/theme-context.jsx';
 
-export const RestaurantsPage = () => {
+export const RestaurantsPage = ( {className} ) => {
+    const { value: themeValue } = useTheme();
     const [activeRestaurantId, setActiveRestaurantId] = useState(
         restaurants[0].id
     );
@@ -13,7 +16,9 @@ export const RestaurantsPage = () => {
     );
 
     return (
-       <div>
+       <div className={classnames(className, {
+           [styles.dark]: themeValue === "dark",
+       })}>
            <div>
                <ul className={styles.restaurantsList}>
                    {restaurants.map(({id, name}) => (
