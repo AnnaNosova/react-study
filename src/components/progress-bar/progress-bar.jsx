@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { throttle } from 'throttle-debounce';
 import styles from "./progress-bar.module.sass"
+import { useTheme } from '../theme-context/theme-context.jsx';
+import classnames from 'classnames';
 
 const calculatePosition = () => {
     return (
@@ -26,10 +28,12 @@ const progressBarWidth = () => {
 }
 
 export const ProgressBar = () => {
+
+    const { value: themeValue } = useTheme();
     const progress = progressBarWidth();
 
     return (
-        <div className={styles.progressBar}
+        <div className={ classnames(styles.progressBar, {[styles.dark]: themeValue === "dark"})}
              style={{ width: progress }}
         />
     )

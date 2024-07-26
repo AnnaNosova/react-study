@@ -1,6 +1,8 @@
 import { useForm } from "./hooks.js";
 import { Counter } from '../counter/counter';
 import styles from "./review-form.module.sass"
+import classnames from 'classnames';
+import { useTheme } from '../theme-context/theme-context.jsx';
 
 export const ReviewForm = () => {
     const { form, updateName, updateText, updateRating, sendReview } = useForm();
@@ -15,9 +17,15 @@ export const ReviewForm = () => {
         updateRating(rating - 1);
     };
 
+    const { value: themeValue } = useTheme();
+
     return (
         <form className={styles.reviewForm} onSubmit={(e) => e.preventDefault()}>
-            <h4 className={`sectionTitle ${styles.title}`}>Send a review</h4>
+            <h4 className={classnames(styles.title, {
+                [styles.dark]: themeValue === "dark",
+            })}>
+                Send a review
+            </h4>
             <div className={styles.formInput}>
                 <label>Name</label>
                 <input
