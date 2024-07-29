@@ -1,25 +1,22 @@
-import { CounterContainer } from '../counter/container';
-import styles from "./menu.module.sass"
-import { useTheme } from '../theme-context/theme-context.jsx';
+import styles from './menu.module.sass';
 import classnames from 'classnames';
-import { useAuthorization } from '../auth-context/auth-context.jsx';
+import { DARK_THEME } from '../theme-context/constants';
+import { useTheme } from '../theme-context/hooks';
+import { MenuItem } from '../menu-item/menu-item';
 
-export const Menu = ({ menu, className }) => {
-    const { value: authValue } = useAuthorization();
-    const { value: themeValue } = useTheme();
+export const Menu = ({ ids, className }) => {
+    const { theme } = useTheme();
+
     return (
         <div>
-            <h4 className={classnames(styles.sectionTitle, className, {
-                [styles.dark]: themeValue === "dark",
+            <h4 className={ classnames(styles.sectionTitle, className, {
+                [styles.dark]: theme === DARK_THEME,
             })}>Menu</h4>
-            <ul className={styles.menu}>
-                {menu.map(({id, name, price}) => (
-                    <li className={styles.item} key={id}>
-                        <div>{name} - {price} USD</div>
-                        {authValue === "loggedIn" && (<CounterContainer min={0} max={5} step={1}/>)}
-                    </li>
-                ))}
-            </ul>
+            <div className={styles.menu}>
+                {ids.map((id) => {
+                    return <MenuItem id={id}/>
+                })}
+            </div>
         </div>
     );
 };

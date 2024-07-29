@@ -1,8 +1,9 @@
-import { useForm } from "./hooks.js";
+import { useForm } from './hooks';
 import { Counter } from '../counter/counter';
-import styles from "./review-form.module.sass"
+import styles from './review-form.module.sass';
 import classnames from 'classnames';
-import { useTheme } from '../theme-context/theme-context.jsx';
+import { useTheme } from '../theme-context/hooks';
+import { DARK_THEME } from '../theme-context/constants';
 
 export const ReviewForm = () => {
     const { form, updateName, updateText, updateRating, sendReview } = useForm();
@@ -10,27 +11,27 @@ export const ReviewForm = () => {
     const { name, text, rating } = form;
 
     const increment = () => {
-        updateRating( rating + 1 );
+        updateRating(rating + 1);
     };
 
     const decrement = () => {
         updateRating(rating - 1);
     };
 
-    const { value: themeValue } = useTheme();
+    const { theme } = useTheme();
 
     return (
         <form className={styles.reviewForm} onSubmit={(e) => e.preventDefault()}>
             <h4 className={classnames(styles.title, {
-                [styles.dark]: themeValue === "dark",
+                [styles.dark]: theme === DARK_THEME,
             })}>
                 Send a review
             </h4>
             <div className={styles.formInput}>
                 <label>Name</label>
                 <input
-                    type={"text"}
-                    name={"name"}
+                    type={'text'}
+                    name={'name'}
                     value={name}
                     onChange={(event) => {
                         updateName(event.target.value);
@@ -40,7 +41,7 @@ export const ReviewForm = () => {
             <div className={styles.formInput}>
                 <label>Text</label>
                 <textarea
-                    name={"text"}
+                    name={'text'}
                     rows={5}
                     value={text}
                     onChange={(event) => {
