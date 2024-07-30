@@ -6,8 +6,12 @@ const initialState = {
         acc[item.id] = item;
         return acc;
     }, {}),
-    ids: Restaurants.map(({id}) => id),
-    names: Restaurants.map(({name}) => name),
+    idsNames: Restaurants. map(({id, name}) => {
+        return {
+            id: id,
+            name: name,
+        }
+    })
 }
 
 export const restaurantSlice = createSlice({
@@ -15,9 +19,8 @@ export const restaurantSlice = createSlice({
     initialState,
     selectors: {
         selectRestaurantById: (state, id) => state.entities[id],
-        selectRestaurantIds: (state) => state.ids,
-        selectRestaurantNames: (state) => state.names,
+        selectRestaurantIdsNames: (state) => state.idsNames,
     },
 })
 
-export const { selectRestaurantById, selectRestaurantIds, selectRestaurantNames } = restaurantSlice.selectors
+export const { selectRestaurantById, selectRestaurantIdsNames } = restaurantSlice.selectors
