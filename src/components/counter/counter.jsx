@@ -1,4 +1,4 @@
-import styles from "./counter.module.sass"
+import styles from './counter.module.sass';
 
 export const Counter = ({ value, increment, decrement, min, max }) => {
     return (

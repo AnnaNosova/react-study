@@ -1,31 +1,34 @@
-import { Menu } from "../menu/menu";
-import { Reviews } from "../reviews/reviews";
+import { Menu } from '../menu/menu';
+import { Reviews } from '../reviews/reviews';
 import { ReviewForm } from '../review-form/review-form';
-import styles from "./restaurant.module.sass"
-import { useTheme } from '../theme-context/theme-context.jsx';
+import styles from './restaurant.module.sass'
+import { useTheme } from '../theme-context/hooks';
 import classnames from 'classnames';
+import { DARK_THEME } from '../theme-context/constants';
+import { useSelector } from 'react-redux';
+import { selectRestaurantById } from '../../redux/entities/restaurant/index';
 
+export const Restaurant = ({ id }) => {
+    const { theme } = useTheme();
+    const restaurant = useSelector((state) => selectRestaurantById(state, id));
+    const { name, menu: menuIds, reviews: reviewsIds } = restaurant || {};
 
-export const Restaurant = ({ restaurant }) => {
-
-    if (!restaurant || !restaurant.name || !restaurant.id || !restaurant.menu || !restaurant.menu.length) {
+    if ( !restaurant || !restaurant.name || !restaurant.id || !restaurant.menu || !restaurant.menu.length ) {
         return null;
     }
 
-    const { value: themeValue } = useTheme();
-
     return (
-        <div key={restaurant.id}>
+        <div key={id}>
             <h3 className={classnames(styles.name, {
-                [styles.dark]: themeValue === "dark",
+                [styles.dark]: theme === DARK_THEME,
             })}>
-                {restaurant.name}
+                {name}
             </h3>
             <div>
-                <Menu menu={restaurant.menu}/>
+                <Menu ids={menuIds}/>
             </div>
             <div>
-                <Reviews reviews={restaurant.reviews} />
+                <Reviews ids={reviewsIds} />
             </div>
             <div>
                 <ReviewForm />

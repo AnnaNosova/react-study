@@ -1,27 +1,30 @@
+import styles from './progress-bar.module.sass';
+import classnames from 'classnames';
+import { DARK_THEME } from '../theme-context/constants';
 import { useEffect, useState } from 'react';
 import { throttle } from 'throttle-debounce';
-import styles from "./progress-bar.module.sass"
-import { useTheme } from '../theme-context/theme-context.jsx';
-import classnames from 'classnames';
+import { useTheme } from '../theme-context/hooks';
+
+
 
 const calculatePosition = () => {
     return (
-        ( window.scrollY / ( document.documentElement.scrollHeight - window.innerHeight ) ) * 100
+        (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
     );
 };
 
 const progressBarWidth = () => {
-    const [value, setValue] = useState("0%");
+    const [value, setValue] = useState('0%');
 
     useEffect(() => {
         const handler = throttle(20, () => {
             const progress = calculatePosition();
 
-            setValue( `${ progress }%` );
+            setValue(`${ progress }%`);
         });
 
-        window.addEventListener("scroll", handler);
-        return () => window.removeEventListener("scroll", handler);
+        window.addEventListener('scroll', handler);
+        return () => window.removeEventListener('scroll', handler);
     }, []);
 
     return value;
@@ -29,11 +32,11 @@ const progressBarWidth = () => {
 
 export const ProgressBar = () => {
 
-    const { value: themeValue } = useTheme();
+    const { theme } = useTheme();
     const progress = progressBarWidth();
 
     return (
-        <div className={ classnames(styles.progressBar, {[styles.dark]: themeValue === "dark"})}
+        <div className={ classnames(styles.progressBar, {[styles.dark]: theme === DARK_THEME})}
              style={{ width: progress }}
         />
     )

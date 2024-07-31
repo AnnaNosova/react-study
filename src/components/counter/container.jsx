@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { Counter } from "./counter";
+import { useState } from 'react';
+import { Counter } from './counter';
 
-export const CounterContainer = ({min, max, step}) => {
+export const CounterContainer = ({ min, max, step }) => {
     const [value, setValue] = useState(min);
 
     const increment = () => setValue((prevState) => Math.min(max, prevState + step));

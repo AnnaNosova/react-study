@@ -1,30 +1,30 @@
-import { useReducer } from "react";
+import { useReducer } from 'react';
 
 const INITIAL_FORM = {
-    name: "",
-    text: "",
+    name: '',
+    text: '',
     rating: 0,
 };
 
 function reducer(state, { type, payload }) {
 
     switch (type) {
-        case "setName":
+        case 'setName':
             return {
                 ...state,
                 name: payload,
             };
-        case "setText":
+        case 'setText':
             return {
                 ...state,
                 text: payload,
             };
-        case "setRating":
+        case 'setRating':
             return {
                 ...state,
                 rating: payload,
             };
-        case "sendReview":
+        case 'sendReview':
             return {
                 ...INITIAL_FORM,
             }
@@ -37,10 +37,10 @@ function reducer(state, { type, payload }) {
 export const useForm = () => {
     const [form, dispatch] = useReducer(reducer, INITIAL_FORM);
 
-    const updateName = (name) => dispatch({ type: "setName", payload: name });
-    const updateText = (text) => dispatch({ type: "setText", payload: text });
-    const updateRating = (rating) => dispatch({ type: "setRating", payload: rating});
-    const sendReview = () => dispatch({ type: "sendReview", payload: INITIAL_FORM });
+    const updateName = (name) => dispatch({ type: 'setName', payload: name });
+    const updateText = (text) => dispatch({ type: 'setText', payload: text });
+    const updateRating = (rating) => dispatch({ type: 'setRating', payload: rating });
+    const sendReview = () => dispatch({ type: 'sendReview', payload: INITIAL_FORM });
 
     return {
         form,

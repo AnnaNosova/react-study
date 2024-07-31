@@ -1,20 +1,20 @@
-import { ThemeButton } from '../theme-button/theme-button.jsx';
-import { useTheme } from '../theme-context/theme-context.jsx';
+import styles from './header.module.sass';
 import classnames from 'classnames';
-import styles from "./header.module.sass";
-import { AuthButton } from '../auth-button/auth-button.jsx';
-
+import { DARK_THEME } from '../theme-context/constants';
+import { ThemeButton } from '../theme-button/theme-button';
+import { useTheme } from '../theme-context/hooks';
+import { UserSection } from '../user-section/user-section';
 
 export const Header = ({ className }) => {
-    const { value: themeValue } = useTheme();
+    const { theme } = useTheme();
 
     return (
         <header className={classnames(className, {
-            [styles.dark]: themeValue === "dark",
+            [styles.dark]: theme === DARK_THEME,
         })}>
             <div><ThemeButton /></div>
             <div className={styles.title}>Restaurants list</div>
-            <div className={styles.auth}><AuthButton /></div>
+            <div className={styles.auth}><UserSection /></div>
         </header>
     );
 };

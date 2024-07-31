@@ -1,28 +1,24 @@
-import styles from "./reviews.module.sass"
+import styles from './reviews.module.sass';
 import classnames from 'classnames';
-import { useTheme } from '../theme-context/theme-context.jsx';
+import { useTheme } from '../theme-context/hooks';
+import { DARK_THEME } from '../theme-context/constants';
+import { Review } from '../review/review';
 
-export const Reviews = ( { reviews }) => {
-    if (reviews?.length) {
+export const Reviews = ({ ids }) => {
+    const { theme } = useTheme();
 
-        const { value: themeValue } = useTheme();
-
-        return (
-            <div>
-                <h4 className={classnames(styles.sectionTitle, {
-                    [styles.dark]: themeValue === "dark",
-                })}>
-                    Reviews
-                </h4>
-                <ul className={styles.review}>
-                    {reviews.map(({ id, user, text }) => (
-                        <li className={styles.item} key={ id }>
-                            <div className={styles.author}>{ user }:</div>
-                            <div className={styles.text}>{ text }</div>
-                        </li>
-                    ) ) }
-                </ul>
-            </div>
-        );
-    }
+    return (
+        <div>
+            <h4 className={classnames(styles.sectionTitle, {
+                [styles.dark]: theme === DARK_THEME,
+            })}>
+                Reviews
+            </h4>
+            <ul className={styles.review}>
+                {ids.map((id) => {
+                    return <Review id={id} />
+                }) }
+            </ul>
+        </div>
+    );
 };
