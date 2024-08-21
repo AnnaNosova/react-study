@@ -1,21 +1,29 @@
-import { Menu } from '../menu/menu';
-import { Reviews } from '../reviews/reviews';
-import { ReviewForm } from '../review-form/review-form';
 import styles from './restaurant.module.sass'
 import { useTheme } from '../theme-context/hooks';
 import classnames from 'classnames';
 import { DARK_THEME } from '../theme-context/constants';
 import { useSelector } from 'react-redux';
 import { selectRestaurantById } from '../../redux/entities/restaurant/index';
+import { NavLink, Outlet, useParams, useNavigate } from 'react-router-dom';
+import { useEffect, } from 'react';
 
 export const Restaurant = ({ id }) => {
     const { theme } = useTheme();
-    const restaurant = useSelector((state) => selectRestaurantById(state, id));
-    const { name, menu: menuIds, reviews: reviewsIds } = restaurant || {};
+    const { restaurantId } = useParams();
+    const restaurant = useSelector((state) => selectRestaurantById(state, restaurantId));
+    const { name } = restaurant || {};
 
     if ( !restaurant || !restaurant.name || !restaurant.id || !restaurant.menu || !restaurant.menu.length ) {
         return null;
     }
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (restaurant) {
+            navigate('menu', { replace: true });
+        }
+    }, [restaurant, navigate]);
 
     return (
         <div key={id}>
@@ -24,15 +32,25 @@ export const Restaurant = ({ id }) => {
             })}>
                 {name}
             </h3>
-            <div>
-                <Menu ids={menuIds}/>
-            </div>
-            <div>
-                <Reviews ids={reviewsIds} />
-            </div>
-            <div>
-                <ReviewForm />
-            </div>
+            <nav>
+                <NavLink
+                    to={'menu'}
+                    className={classnames(styles.tab, {
+                        [styles.dark]: theme === DARK_THEME,
+                    })}
+                >
+                    Menu
+                </NavLink>
+                <NavLink
+                    to={'reviews'}
+                    className={classnames(styles.tab, {
+                        [styles.dark]: theme === DARK_THEME,
+                    })}
+                >
+                    Reviews
+                </NavLink>
+            </nav>
+            <Outlet />
         </div>
     );
 };

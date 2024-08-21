@@ -1,0 +1,48 @@
+//li
+//  width: 70%
+
+.tabLink
+  display: flex
+  justify-content: flex-start
+  align-items: center
+  color: var(--primary5)
+  margin-bottom: 2vh
+  background-color: white
+  cursor: pointer
+  padding: 14px 16px
+  font-size: 25px
+  width: 100%
+  font-family: 'queensides', sans-serif
+  border-width: 1px
+  border-style: solid
+  border-color: var(--primary2)
+  text-decoration: none
+
+  &:hover
+    background-color: var(--primary1)
+    border-color: var(--primary6)
+
+  .img
+    overflow: hidden
+    height: 150px
+    width: 150px
+    margin-right: 3vw
+    border: 1px solid var(--primary2)
+
+    img
+      height: 150px
+      transform: translate(-20%)
+
+.tabLink .active
+  background-color: var(--primary1) !important
+
+
+.dark
+  background-color: var(--primary1)
+  border: none
+
+  &:hover
+    background-color: var(--primary6)
+
+  .disabled
+    background-color: var(--primary6) !important

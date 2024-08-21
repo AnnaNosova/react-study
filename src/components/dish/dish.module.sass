@@ -1,0 +1,55 @@
+.dish
+  padding: 5vh 0 5vh 5vw
+  display: flex
+  flex-direction: row
+  width: 85%
+  justify-content: space-between
+
+.inner
+  display: inline-flex
+
+.ingredients
+  font-size: 16px
+  margin-bottom: 2vh
+
+.link
+  width: 50%
+  margin: auto auto
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-direction: row
+  align-content: space-around
+  background-color: var(--primary3)
+  font-size: 25px
+  color: var(--primary5)
+  text-decoration: none
+  cursor: pointer
+  padding: 14px 16px
+
+  &:hover
+    color: var(--primary6)
+    background-color: var(--primary1)
+
+  &.dark
+    color: var(--primary2)
+    background-color: var(--primary1)
+
+    &:hover
+      background-color: var(--primary6)
+
+.img
+  display: inline-flex
+  overflow: hidden
+  height: 150px
+  width: 150px
+  margin-right: 3vw
+  border: 1px solid var(--primary2)
+
+  img
+    height: 150px
+    transform: translate(-20%)
+
+.dark
+  color: white
+  background-color: var(--primary2)

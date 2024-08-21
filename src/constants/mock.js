@@ -11,6 +11,7 @@ export const Restaurants = [
             '5909796d-5030-4e36-adec-68b8f9ec2d96',
             '429dea85-11dd-4054-a31e-c60c92e17255',
         ],
+        img: 'src/images/dishoom.jpg',
     },
     {
         id: 'bb8afbec-2fec-491f-93e9-7f13950dd80b',
@@ -24,6 +25,7 @@ export const Restaurants = [
             'c27ab88e-375c-4e98-aa94-8a180150a797',
             'abc0c5e1-cd57-4f0a-99d9-00e6b4533b3a',
         ],
+        img: `src/images/homeslice.jpg`,
     },
     {
         id: '982bfbce-c5e0-41a0-9f99-d5c20ecee49d',

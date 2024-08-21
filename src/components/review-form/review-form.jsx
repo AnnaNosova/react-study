@@ -63,7 +63,6 @@ export const ReviewForm = () => {
             <div className={styles.formInput}>
                 <button className={styles.btn} onClick={ sendReview }>Send</button>
             </div>
-            <br/>
         </form>
     );
 };

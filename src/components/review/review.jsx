@@ -8,7 +8,7 @@ export const Review = ({ id }) => {
     const user = useSelector(state => selectUserById(state, review.userId));
 
     return (
-        <li className={styles.item}>
+        <li id={id} className={styles.item}>
             <div className={styles.author}>{user.name}:</div>
             <div className={styles.text}>{review.text} </div>
         </li>

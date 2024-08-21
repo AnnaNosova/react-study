@@ -1,24 +1,29 @@
 import styles from './reviews.module.sass';
-import classnames from 'classnames';
-import { useTheme } from '../theme-context/hooks';
-import { DARK_THEME } from '../theme-context/constants';
 import { Review } from '../review/review';
+import { ReviewForm } from '../review-form/review-form.jsx';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectRestaurantById } from '../../redux/entities/restaurant/index.js';
 
-export const Reviews = ({ ids }) => {
-    const { theme } = useTheme();
+export const Reviews = () => {
+    const { restaurantId } = useParams();
+    const restaurant = useSelector((state) =>
+        selectRestaurantById(state, restaurantId)
+    );
+    const { reviews } = restaurant;
 
     return (
         <div>
-            <h4 className={classnames(styles.sectionTitle, {
-                [styles.dark]: theme === DARK_THEME,
-            })}>
-                Reviews
-            </h4>
-            <ul className={styles.review}>
-                {ids.map((id) => {
-                    return <Review id={id} />
-                }) }
-            </ul>
+            <div>
+                <div className={styles.review}>
+                    {reviews.map((id) => {
+                        return <Review id={id} />
+                    }) }
+                </div>
+            </div>
+            <div>
+                <ReviewForm />
+            </div>
         </div>
     );
 };

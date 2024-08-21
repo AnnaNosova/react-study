@@ -6,5 +6,35 @@
   font-weight: bold
   color: var(--primary2)
 
+nav
+  display: flex
+  justify-content: space-around
+
+  .tab
+    width: 40%
+    display: inline-flex
+    justify-content: center
+    flex-direction: row
+    align-content: space-around
+    background-color: var(--primary3)
+    font-size: 25px
+    color: var(--primary5)
+    text-decoration: none
+    cursor: pointer
+    padding: 14px 16px
+
+    &:hover
+      color: var(--primary6)
+      background-color: var(--primary1)
+    //&:disabled
+    //  background-color: var(--primary1)
+
+    &.dark
+      color: var(--primary2)
+      background-color: var(--primary1)
+
+      &:hover
+        background-color: var(--primary6)
+
 .dark
   color: white
