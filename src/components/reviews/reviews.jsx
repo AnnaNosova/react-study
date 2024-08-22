@@ -17,7 +17,7 @@ export const Reviews = () => {
             <div>
                 <div className={styles.review}>
                     {reviews.map((id) => {
-                        return <Review id={id} />
+                        return <Review key={id} id={id} />
                     }) }
                 </div>
             </div>

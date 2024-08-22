@@ -19,13 +19,13 @@ export const MenuItem = ({ id }) => {
 
     return (
         <div>
-            <div id={id} className={styles.item}>
-                <Link to={`/dish/${id}`} state={{ item, restaurantId }} id={id} className={styles.link}>
+            <div className={styles.item}>
+                <Link to={`/dish/${id}`} state={{ item, restaurantId }} className={styles.link}>
                     <div>{name} - {price && <span>{price} USD</span>}</div>
                     <div className={styles.ingredients}>
                         {Boolean(ingredients.length) &&
-                            ingredients.map((item) => (
-                                <span>{item} </span>
+                            ingredients.map((ingredient) => (
+                                <span key={id}>{ingredient} </span>
                             ))}
                     </div>
                 </Link>

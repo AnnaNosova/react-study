@@ -10,42 +10,42 @@ import { useEffect, } from 'react';
 export const Restaurant = ({ id }) => {
     const { theme } = useTheme();
     const { restaurantId } = useParams();
-    const restaurant = useSelector((state) => selectRestaurantById(state, restaurantId));
+    const restaurant = useSelector( ( state ) => selectRestaurantById( state, restaurantId ) );
     const { name } = restaurant || {};
+    const navigate = useNavigate();
+
+    useEffect( () => {
+        if ( restaurant ) {
+            navigate( 'menu', { replace: true } );
+        }
+    }, [ restaurant, navigate ] );
+
 
     if ( !restaurant || !restaurant.name || !restaurant.id || !restaurant.menu || !restaurant.menu.length ) {
         return null;
     }
 
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        if (restaurant) {
-            navigate('menu', { replace: true });
-        }
-    }, [restaurant, navigate]);
-
     return (
-        <div key={id}>
-            <h3 className={classnames(styles.name, {
+        <div key={ id }>
+            <h3 className={ classnames( styles.name, {
                 [styles.dark]: theme === DARK_THEME,
-            })}>
-                {name}
+            } ) }>
+                { name }
             </h3>
             <nav>
                 <NavLink
-                    to={'menu'}
-                    className={classnames(styles.tab, {
+                    to={ 'menu' }
+                    className={ classnames( styles.tab, {
                         [styles.dark]: theme === DARK_THEME,
-                    })}
+                    } ) }
                 >
                     Menu
                 </NavLink>
                 <NavLink
-                    to={'reviews'}
-                    className={classnames(styles.tab, {
+                    to={ 'reviews' }
+                    className={ classnames( styles.tab, {
                         [styles.dark]: theme === DARK_THEME,
-                    })}
+                    } ) }
                 >
                     Reviews
                 </NavLink>

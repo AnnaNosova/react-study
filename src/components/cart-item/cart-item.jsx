@@ -8,7 +8,7 @@ export const CartItem = ({ id }) => {
     const amount = useSelector((state) => selectCartItemAmountById(state, id));
     const item = useSelector((state) => selectDishById(state, id));
     const { name, price } = item || {};
-    let total = price*amount;
+    const total = price*amount;
 
     return (
         <div className={styles.item}>

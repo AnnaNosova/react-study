@@ -14,7 +14,7 @@ export const Menu = () => {
     return (
         <div className={styles.menu}>
             {menu.map((id) => {
-                return <MenuItem id={id}/>
+                return <MenuItem key={id} id={id}/>
             })}
         </div>
     );

@@ -28,7 +28,7 @@ export const Dish = () => {
                         <div className={styles.ingredients}>
                             {Boolean(item.ingredients.length) &&
                                 item.ingredients.map((item) => (
-                                    <span>{item} </span>
+                                    <span key={item.id}>{item} </span>
                                 ))}
                         </div>
                     </div>

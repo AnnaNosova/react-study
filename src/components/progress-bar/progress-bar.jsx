@@ -13,7 +13,7 @@ const calculatePosition = () => {
     );
 };
 
-const progressBarWidth = () => {
+const ProgressBarWidth = () => {
     const [value, setValue] = useState('0%');
 
     useEffect(() => {
@@ -33,7 +33,7 @@ const progressBarWidth = () => {
 export const ProgressBar = () => {
 
     const { theme } = useTheme();
-    const progress = progressBarWidth();
+    const progress = ProgressBarWidth();
 
     return (
         <div className={ classnames(styles.progressBar, {[styles.dark]: theme === DARK_THEME})}

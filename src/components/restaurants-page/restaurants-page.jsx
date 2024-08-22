@@ -22,7 +22,7 @@ export const RestaurantsPage = ({ className }) => {
        })}>
            <ul className={styles.restaurantsList}>
                {restaurants.map((id) => (
-                   <li id={id}
+                   <li key={id}
                        className={classnames(className, {
                        [styles.dark]: theme === DARK_THEME,
                    })}>
