@@ -36,6 +36,7 @@ export const Restaurants = [
             '4bc8528e-26d1-46c3-a522-8e18d10c8c84',
         ],
         reviews: ['13b642d7-5e86-4717-a466-0640a1dee076'],
+        img: `src/images/fabrique.jpg`,
     },
     {
         id: 'd9241927-09e1-44f3-8986-a76346869037',
@@ -48,6 +49,7 @@ export const Restaurants = [
             '5db6247b-ab1c-49db-be1f-8dd27fd38b81',
             '381b0c31-6360-43ff-80d1-581a116159d8',
         ],
+        img: `src/images/flat-iron.jpg`,
     },
 ];
 

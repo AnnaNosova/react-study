@@ -21,7 +21,7 @@ export const Dish = () => {
             <div id={item.id} className={styles.dish}>
                 <div className={styles.inner}>
                     <div className={styles.img}>
-                        <img src={'src/images/dish-d.jpg'} alt={item.name} />
+                        <img src={`../src/images/dish.jpg`} alt={item.name} />
                     </div>
                     <div>
                         {item.name} - {item.price && <span>{item.price} USD</span>}
