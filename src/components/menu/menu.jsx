@@ -1,22 +1,21 @@
 import styles from './menu.module.sass';
-import classnames from 'classnames';
-import { DARK_THEME } from '../theme-context/constants';
-import { useTheme } from '../theme-context/hooks';
 import { MenuItem } from '../menu-item/menu-item';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectRestaurantById } from '../../redux/entities/restaurant/index.js';
 
-export const Menu = ({ ids, className }) => {
-    const { theme } = useTheme();
+export const Menu = () => {
+    const { restaurantId } = useParams();
+    const restaurant = useSelector((state) =>
+        selectRestaurantById(state, restaurantId)
+    );
+    const { menu } = restaurant;
 
     return (
-        <div>
-            <h4 className={ classnames(styles.sectionTitle, className, {
-                [styles.dark]: theme === DARK_THEME,
-            })}>Menu</h4>
-            <div className={styles.menu}>
-                {ids.map((id) => {
-                    return <MenuItem id={id}/>
-                })}
-            </div>
+        <div className={styles.menu}>
+            {menu.map((id) => {
+                return <MenuItem key={id} id={id}/>
+            })}
         </div>
     );
 };

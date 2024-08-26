@@ -1,29 +1,13 @@
 .restaurantsList
   list-style-type: none
-  display: flex
-  padding: 0
+  display: grid
+  grid-template-columns: auto auto
+  justify-items: center
+  margin: 0
+  padding: 5vh 0 0
 
   li
-    width: 25%
-
-.tabLink
-  margin-right: 15px
-  background-color: var(--primary3)
-  color: var(--primary5)
-  float: left
-  border: none
-  outline: none
-  cursor: pointer
-  padding: 14px 16px
-  font-size: 17px
-  width: 100%
-  font-family: 'queensides', sans-serif
-
-  &:hover
-    color: var(--primary6)
-    background-color: var(--primary1)
-  &:disabled
-    background-color: var(--primary1)
+    width: 70%
 
 
 .restaurantCard
@@ -32,3 +16,10 @@
 .dark
   background-color: var(--primary2)
   color: white
+
+  .tabLink
+    background-color: var(--primary1)
+    border: none
+
+    &:hover
+      background-color: var(--primary6)
