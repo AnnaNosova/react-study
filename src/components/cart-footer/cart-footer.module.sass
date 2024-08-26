@@ -6,7 +6,14 @@
     display: grid
     grid-gap: 1rem
     grid-template-columns: 30vw 15vw 20vw 15vw
+    grid-template-areas: 'empty empty total value'
     max-height: 50px
+
+    .title
+      grid-area: total
+
+    .value
+      grid-area: value
 
   .btn
     font-family: 'queensides', sans-serif

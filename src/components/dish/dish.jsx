@@ -14,11 +14,13 @@ export const Dish = () => {
         auth: { isAuthorized },
     } = useAuthorization();
 
+    item.ingredients.map((item) => (console.log(item)));
+
     return (
         <div className={classnames({
             [styles.dark]: theme === DARK_THEME,
         })}>
-            <div id={item.id} className={styles.dish}>
+            <div className={styles.dish}>
                 <div className={styles.inner}>
                     <div className={styles.img}>
                         <img src={`../src/images/dish.jpg`} alt={item.name} />
@@ -27,8 +29,8 @@ export const Dish = () => {
                         {item.name} - {item.price && <span>{item.price} USD</span>}
                         <div className={styles.ingredients}>
                             {Boolean(item.ingredients.length) &&
-                                item.ingredients.map((item) => (
-                                    <span key={item.id}>{item} </span>
+                                item.ingredients.map((ingredient) => (
+                                    <span key={ingredient}>{ingredient} </span>
                                 ))}
                         </div>
                     </div>

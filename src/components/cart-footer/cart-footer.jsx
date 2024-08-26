@@ -4,7 +4,7 @@ export const CartFooter = () => {
 
     return (
         <div className={styles.footer}>
-            <div className={styles.total}><span></span> <span></span> <span>Total: </span><span> USD</span></div>
+            <div className={styles.total}><span className={styles.title}>Total: </span><span className={styles.value}> USD</span></div>
             <button className={styles.btn}>Proceed to checkout</button>
         </div>
     );

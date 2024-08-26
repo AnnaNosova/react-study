@@ -25,7 +25,7 @@ export const MenuItem = ({ id }) => {
                     <div className={styles.ingredients}>
                         {Boolean(ingredients.length) &&
                             ingredients.map((ingredient) => (
-                                <span key={id}>{ingredient} </span>
+                                <span key={ingredient}>{ingredient} </span>
                             ))}
                     </div>
                 </Link>
